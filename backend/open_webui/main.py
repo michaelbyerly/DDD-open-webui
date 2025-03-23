@@ -33,6 +33,10 @@ from fastapi import (
     BackgroundTasks,
 )
 
+import atopile
+# print("atopile version:", atopile.__version__)
+
+
 from fastapi.openapi.docs import get_swagger_ui_html
 
 from fastapi.middleware.cors import CORSMiddleware
