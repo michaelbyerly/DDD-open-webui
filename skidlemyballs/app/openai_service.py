@@ -1,6 +1,13 @@
 import openai
 import asyncio
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
+
+# Set your OpenAI API key from the environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 async def get_openai_response(prompt: str) -> str:
     loop = asyncio.get_event_loop()
@@ -21,7 +28,7 @@ async def get_openai_response(prompt: str) -> str:
         )
 
         # Extract the generated content from the response
-        response = completion.choices[0].message["content"]
+        response = completion.choices[0].message.content
         return response
     except Exception as e:
         raise Exception(f"Error contacting OpenAI: {e}")
